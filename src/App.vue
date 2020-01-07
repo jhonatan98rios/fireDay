@@ -36,6 +36,27 @@ body{
   overflow-y: hidden;
 }
 
+.install{
+  margin: 0 auto;
+  text-align: center;
+  z-index: 99;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 18vh;
+  padding-top: 2vh;
+  background-color: #fff;
+  font-family: sans-serif;
+  transform: translateY(150px);
+  transition: all 1s;
+
+  span{
+    position: absolute;
+    right: 10px;
+  }
+
+}
+
 #app {
   margin: 0 auto;
   padding: 0;

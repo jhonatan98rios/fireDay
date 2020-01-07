@@ -12,11 +12,30 @@
     <title>fire-day</title>
   </head>
   <body>
-    <pwa-install></pwa-install>
     <noscript>
       <strong>We're sorry but fire-day doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
+  <div class="install">
+    <span id="close"> X </span>
+    <h2> Adicione à sua área de trabalho </h2>
+    <div id="button">
+      <pwa-install></pwa-install>
+    </div>
+  </div>
+  <script>
+
+    setTimeout(()=>{
+      let install = document.querySelector('.install').style
+      install.display="block"
+      install.transform="translateY(0px)"
+      document.querySelector("#close").addEventListener('click', ()=>{
+        install.display="none"
+      })
+      document.querySelector("#button").addEventListener('click', ()=>{
+        install.height="98vh"
+      })
+    }, 500)
+  </script>
 </html>
