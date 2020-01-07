@@ -1,29 +1,23 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import GameView from '../views/GameView'
+import Store from '../views/Store'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    {
+        path: '/',
+        name: 'gameView',
+        component: GameView,
+    },
+    {
+        path: '/store',
+        name: 'store',
+        component: Store,
+    },
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+const router = new Router({ routes })
 
 export default router
