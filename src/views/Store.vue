@@ -89,7 +89,7 @@ export default {
           img: jaguapitanga,
           title: "Jaguapitanga",
           price: "1000",
-          bought: true,
+          bought: false,
           selected: false,
           class: 'jaguapitanga'
         },
@@ -98,7 +98,7 @@ export default {
           img: capivara,
           title: "Capivara",
           price: "50000",
-          bought: true,
+          bought: false,
           selected: false,
           class: 'capivara'
         },
