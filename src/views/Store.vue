@@ -167,10 +167,6 @@ export default {
     buy: function(val){
       let value = val.target.value
       let id = val.target.id
-      
-      console.log(this.currentMoney)
-      console.log(value)
-      console.log(this.currentMoney - value)
 
         if((this.currentMoney - value) >= 0 ){
 
