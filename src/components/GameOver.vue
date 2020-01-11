@@ -1,9 +1,12 @@
 <template>
-  <div class="gameOver" v-if="!content.inGame">
-    <div class="button" @click="start">
+  <div class="gameOver" v-if="!content.inGame || content.inPause">
+    <div v-if="content.inPause" class="button" @click="$emit('play')">
+      Continuar
+    </div>
+    <div v-if="!content.inPause" class="button" @click="start">
       Iniciar
     </div>
-    <div class="button">
+    <div v-if="!content.inPause" class="button">
       <router-link to="/store"> Store </router-link>
     </div>
     <p> Pontos: {{content.money}} </p>

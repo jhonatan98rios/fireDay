@@ -12,9 +12,9 @@
       v-bind:class="currentSkin "
       />
 
-    <particlesJS v-if="inGame" />
+    <particlesJS v-if="inGame && !inPause" />
     <!-- <div class="touchable background" @mousedown="jump" v-touch:tap="jump" :class="{ 'block' : !inGame }" /> -->
-    <div class="touchable background" @mousedown="jump" :class="{ 'block' : !inGame }" />
+    <div class="touchable background" @mousedown="jump" :class="{ 'block' : (!inGame || inPause) }" />
   </div>
 </template>
 
@@ -49,6 +49,7 @@ export default {
 
   props:[
     'inGame',
+    'inPause',
     'currentSkin'
   ],
 
@@ -68,7 +69,7 @@ export default {
   methods:{
 
     updateSprite: function(){
-      if(this.$props.inGame == true){
+      if(this.$props.inGame == true && this.$props.inPause == false){
         let sprite = this.player.sprite
         let image = this.player.image
 
@@ -89,36 +90,45 @@ export default {
     },
 
     render: function (){    
-      if(this.$props.inGame == true){
+      if(this.$props.inGame == true && this.$props.inPause == false){
         this.game.skyPos -= 0.1
         this.game.mountainPos += (this.game.vel / 10)
         this.game.mountainsPos += (this.game.vel)
         this.game.forestPos -= (this.game.vel * 300)
         this.game.firePos -= (this.game.vel * 300)
-        if(this.game.firePos < -100 + this.game.vel){
-          this.game.firePos = window.innerWidth
+
+        if(this.game.firePos < -100){
+          let random = Math.random() * 2
+          if(random > 1){
+            this.game.firePos = window.innerWidth * random
+          }
         }
+
         this.collision()
       }
     },
 
     upSpeed: function(){
-      if(this.game.vel < 0.05 || window.innerWidth > 600){
-        this.game.vel += (this.game.vel / 1000)
+      if(this.$props.inGame == true && this.$props.inPause == false){
+        if(this.game.vel < 0.05 || window.innerWidth > 600){
+          this.game.vel += (this.game.vel / 1000)
+        }
       }
     },
 
     jump: function(){
-      if(this.$props.inGame == true){
+      if(this.$props.inGame == true && this.$props.inPause == false){
         if(this.player.isTouch == true){
           let up = setInterval(()=>{
-            this.player.posY += this.player.accel // Height jump
-            this.player.accel -= 0.03
-
-            if(this.player.posY < 10){
-              this.player.accel = 1
-              this.player.isTouch = true
-              clearInterval(up)
+            if(this.$props.inGame == true && this.$props.inPause == false){
+              this.player.posY += this.player.accel // Height jump
+              this.player.accel -= 0.03
+  
+              if(this.player.posY < 10){
+                this.player.accel = 1
+                this.player.isTouch = true
+                clearInterval(up)
+              }
             }
           }, 12)
         }

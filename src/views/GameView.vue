@@ -1,14 +1,16 @@
 <template>
   <div class="gameView">
-    <Game :inGame='content.inGame' :currentSkin="currentSkin" @hit='hit' @game-over="stopGame" />
-    <Score :score='content.score' />
+    <Game :inGame='content.inGame' :inPause='content.inPause' :currentSkin="currentSkin"  @hit='hit' @game-over="stopGame" />
+    <Score :score='content.score' :inGame='content.inGame' />
+    <Pause @pause='pause' :inGame='content.inGame' />
     <LifeBar :life='content.life' />
-    <GameOver @start="start" :content='content' />
+    <GameOver @start="start" @play="play" :content='content' />
   </div>
 </template>
 
 <script>
 import Game from '@/components/Game'
+import Pause from '@/components/Pause'
 import Score from '@/components/Score'
 import LifeBar from '@/components/LifeBar'
 import GameOver from '@/components/GameOver'
@@ -16,6 +18,7 @@ import GameOver from '@/components/GameOver'
 export default {
   components:{
     Game,
+    Pause,
     Score,
     LifeBar,
     GameOver
@@ -27,6 +30,7 @@ export default {
         score: 0,
         money: 0,
         inGame: false,
+        inPause: false,
         life: 100
       }
     }
@@ -62,11 +66,21 @@ export default {
       this.content.money = score
       this.content.inGame = false
     },
+
+    pause: function(){
+      this.content.inPause = true
+    },
+
+    play: function(){
+      this.content.inPause = false
+    }
+
+
   },
   
   mounted(){
     setInterval(()=>{
-      if(this.content.inGame){
+      if(this.content.inGame && !this.content.inPause){
         this.content.score ++
       }
     }, 1000)

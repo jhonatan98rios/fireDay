@@ -1,5 +1,5 @@
 <template>
-  <div class="score">
+  <div class="score" v-if="inGame">
     <h3 class="counter" v-html="score" />
   </div>
 </template>
@@ -11,7 +11,8 @@ export default {
     }
   },
   props:[
-    'score'
+    'score',
+    'inGame'
   ],
 }
 </script>
@@ -25,7 +26,7 @@ export default {
   .counter{
     text-align: left;
     font-size: 25px;
-    margin: 10px;
+    margin: 60px 10px;
     color: #fff;
 
     &:before{
