@@ -167,21 +167,26 @@ export default {
     buy: function(val){
       let value = val.target.value
       let id = val.target.id
+      
+      console.log(this.currentMoney)
+      console.log(value)
+      console.log(this.currentMoney - value)
 
-      if(value <= this.currentMoney){
-        alert("Compra realizada")
-        let array = this.shoppingList
-        array.push(id)
-        array = array.toString()
-        localStorage.setItem('fireDayShoppingList', array)
+        if((this.currentMoney - value) >= 0 ){
 
-        let oldMoney = localStorage.getItem('fireDayScore')
-        let newMoney =  parseInt(oldMoney) - value
+          alert("Compra realizada")
+          let array = this.shoppingList
+          array.push(id)
+          array = array.toString()
+          localStorage.setItem('fireDayShoppingList', array)
+  
+          let oldMoney = localStorage.getItem('fireDayScore')
+          let newMoney =  parseInt(oldMoney) - value
+  
+          localStorage.setItem('fireDayScore', newMoney)
+          this.loadMoney()
 
-        localStorage.setItem('fireDayScore', newMoney)
-        this.loadMoney()
-
-      }else{
+        }else{
         alert("Dinheiro insuficiente")
       }
       this.loadItens()

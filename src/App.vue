@@ -49,7 +49,7 @@ body{
   padding-top: 2vh;
   background-color: #fff;
   font-family: sans-serif;
-  transform: translateY(150px);
+  transform: translateY(200px);
   transition: all 1s;
 
   span{
