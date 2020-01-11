@@ -14,3 +14,9 @@ if(!cache){
 		})
 	}, 500)
 }
+
+/* Isso é só uma tentativa */
+/* let logo = document.querySelector("[alt='www.000webhost.com']")
+if(logo){
+	logo.style.display = "none"
+} */

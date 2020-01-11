@@ -34,12 +34,16 @@ export default {
 body{
   margin: 0 auto;
   overflow-y: hidden;
+
+  #app{
+    z-index: 999999999;
+  }
 }
 
 .install{
   margin: 0 auto;
   text-align: center;
-  z-index: 99;
+  z-index: 9999999999;
   position: absolute;
   bottom: 0;
   width: 100%;
