@@ -1,22 +1,20 @@
 let cache = localStorage.getItem('fireDayHasInstalled')
+let install = document.querySelector('.install').style
 
 if(!cache){
 	setTimeout(()=>{
-		let install = document.querySelector('.install').style
 		install.display="block"
 		install.transform="translateY(0px)"
 		document.querySelector("#close").addEventListener('click', ()=>{
 			install.display="none"
 		})
 		document.querySelector("#button").addEventListener('click', ()=>{
-			install.height="98vh"
+			install.height="90vh"
 			localStorage.setItem('fireDayHasInstalled', true)
 		})
 	}, 500)
 }
 
-/* Isso é só uma tentativa */
-/* let logo = document.querySelector("[alt='www.000webhost.com']")
-if(logo){
-	logo.style.display = "none"
-} */
+/* document.querySelector('button#closeButton').addEventListener('click', ()=>{
+	document.querySelector('.install').style.display="none"
+}) */

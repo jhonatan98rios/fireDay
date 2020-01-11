@@ -34,20 +34,18 @@ export default {
 body{
   margin: 0 auto;
   overflow-y: hidden;
-
-  #app{
-    z-index: 999999999;
-  }
 }
 
 .install{
+  overflow-y: auto;
   margin: 0 auto;
   text-align: center;
-  z-index: 9999999999;
+  z-index: 99;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 18vh;
+  height: 20vh;
+  min-height: 150px;
   padding-top: 2vh;
   background-color: #fff;
   font-family: sans-serif;
@@ -57,6 +55,10 @@ body{
   span{
     position: absolute;
     right: 10px;
+  }
+
+  #openButton{
+    background-color: #f00;
   }
 
 }
