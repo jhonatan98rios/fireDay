@@ -57,10 +57,6 @@ body{
     right: 10px;
   }
 
-  #openButton{
-    background-color: #f00;
-  }
-
 }
 
 #app {

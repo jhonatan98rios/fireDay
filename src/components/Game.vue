@@ -205,10 +205,13 @@ export default {
   background-repeat: repeat-x;
   top: calc(70vh - 200px);
   background-position-y: 36px !important;
-  opacity: .8;
 
   @media(min-width: 768px){
     top: 30vh;
+  }
+
+  @media(min-height: 700px){
+    top: calc(70vh - 170px);
   }
 }
 
@@ -244,6 +247,11 @@ export default {
   @media(min-width: 768px){
     top: 85vh;
   }
+
+  @media(min-height: 700px){
+    top: 82vh;
+  }
+
 }
 
 .block{

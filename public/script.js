@@ -9,12 +9,8 @@ if(!cache){
 			install.display="none"
 		})
 		document.querySelector("#button").addEventListener('click', ()=>{
-			install.height="90vh"
+			install.height="98vh"
 			localStorage.setItem('fireDayHasInstalled', true)
 		})
 	}, 500)
 }
-
-/* document.querySelector('button#closeButton').addEventListener('click', ()=>{
-	document.querySelector('.install').style.display="none"
-}) */
