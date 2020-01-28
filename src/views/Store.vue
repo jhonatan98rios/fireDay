@@ -55,9 +55,6 @@
 <script>
 
 import Flickity from 'vue-flickity';
-import lobo_guara from '../assets/store/lobo_guara.jpg'
-import jaguapitanga from '../assets/store/jaguapitanga.jpg'
-import capivara from '../assets/store/capivara.jpg'
 
 export default {
   components:{
@@ -74,68 +71,6 @@ export default {
       },
       currentMoney: 0,
       shoppingList: [],
-      itens:[
-        {
-          id: '001',
-          img: lobo_guara,
-          title: "Lobo Guará",
-          price: "free",
-          bought: true,
-          selected: true,
-          class: 'lobo-guara'
-        },
-        {
-          id: '002',
-          img: jaguapitanga,
-          title: "Jaguapitanga",
-          price: "1000",
-          bought: false,
-          selected: false,
-          class: 'jaguapitanga'
-        },
-        {
-          id: '003',
-          img: capivara,
-          title: "Capivara",
-          price: "50000",
-          bought: false,
-          selected: false,
-          class: 'capivara'
-        },
-        /* {
-          id: '004',
-          img: "https://www.estudopratico.com.br/wp-content/uploads/2018/09/caititu-porco-do-mato.jpg",
-          title: "Caititu",
-          price: "50000",
-          bought: false,
-          selected: false,
-          class: 'caititu'
-        },
-        {
-          id: '005',
-          img: "https://i.pinimg.com/originals/9e/ef/a2/9eefa283e376bd98c627bf32ae727109.jpg",
-          title: "Jaguatirica",
-          price: "50000",
-          bought: false,
-          selected: false
-        },
-        {
-          id: '006',
-          img: "https://gcn.net.br/dir-arquivo-imagem/2012/12/%7B20121226232200%7D_tatu.jpg",
-          title: "Tatu",
-          price: "50000",
-          bought: false,
-          selected: false
-        },
-        {
-          id: '007',
-          img: "https://i.pinimg.com/474x/c8/26/44/c8264473a21ba455421952f9ff40fab4.jpg",
-          title: "Onça Negra",
-          price: "50000",
-          bought: false,
-          selected: false
-        } */
-      ]
     }
   },
 

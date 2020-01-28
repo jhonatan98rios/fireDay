@@ -10,6 +10,8 @@
 
 <script>
 
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   data(){
     return{
@@ -17,14 +19,36 @@ export default {
     }
   },
 
+  computed:{
+    ...mapState({
+      itens: state => state.itens
+    })
+  },
+
   methods:{
+    ...mapMutations([
+      'loadStore'
+    ]),
+
     hasMoney: function(money){
       this.content.money = money
     },
 
     changeSkin: function(skin){
       this.currentSkin = skin
-    }
+    },
+
+    loadStorage: function(){
+      if(localStorage.getItem('fireDayStorage')){
+        this.loadStore()
+      }else{
+        localStorage.setItem('fireDayStorage', this.itens)
+      }
+    },
+  },
+
+  mounted(){
+    this.loadStorage()
   }
 }
 </script>

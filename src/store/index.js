@@ -1,31 +1,52 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import lobo_guara from '../assets/store/lobo_guara.jpg'
+import jaguapitanga from '../assets/store/jaguapitanga.jpg'
+import capivara from '../assets/store/capivara.jpg'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state:{
-        inGame: false,
-        inPause: false,
-        score: 0
+        itens:[
+					{
+						id: '001',
+						img: lobo_guara,
+						title: "Lobo Guará",
+						price: "free",
+						bought: true,
+						selected: true,
+						class: 'lobo-guara'
+					},
+					{
+						id: '002',
+						img: jaguapitanga,
+						title: "Jaguapitanga",
+						price: "1000",
+						bought: false,
+						selected: false,
+						class: 'jaguapitanga'
+					},
+					{
+						id: '003',
+						img: capivara,
+						title: "Capivara",
+						price: "50000",
+						bought: false,
+						selected: false,
+						class: 'capivara'
+					}
+				]
     },
     mutations:{
-        changeInGame(state, status){
-            state.inGame = status
-        },
-        changeInPause(state, status){
-            state.inPause = status
-        },
-        incrementScore(state){
-            state.score ++
-        },
-        setScore(state, value){
-            state.score = value
-        }
+			loadStorage: state => {
+				state.itens = localStorage.getItem('fireDayStorage')
+			},
     }
 })
 
-export default store
+export {store}
 
 /* 
 Getter: store.state.value
