@@ -41,7 +41,7 @@ const store = new Vuex.Store({
     },
     mutations:{
 			loadStorage: state => {
-				state.itens = localStorage.getItem('fireDayStorage')
+				state.itens = JSON.parse(localStorage.getItem('fireDayStorage'))
 			},
     }
 })

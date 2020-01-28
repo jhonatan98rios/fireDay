@@ -42,7 +42,7 @@ export default {
       if(localStorage.getItem('fireDayStorage')){
         this.loadStore()
       }else{
-        localStorage.setItem('fireDayStorage', this.itens)
+        localStorage.setItem('fireDayStorage', JSON.stringify(this.itens))
       }
     },
   },
