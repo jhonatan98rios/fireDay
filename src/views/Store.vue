@@ -65,7 +65,7 @@ export default {
   data(){
     return{
       flickityOptions: {
-        initialIndex: 0,
+        initialIndex: 1,
         prevNextButtons: false,
         pageDots: false,
         wrapAround: false
@@ -87,32 +87,9 @@ export default {
       'selectItem'
     ]),
 
-    /* selecionar: function(val){
-      this.itens.map((item)=>{
-        if(item.id == val.target.id){
-          if(item.bought == true){
-            this.itens.map((skin)=>{
-              skin.selected = false
-              item.selected = true
-              this.changeSkin()
-              localStorage.setItem('fireDaySkin', item.class)
-            })
-          }
-        }
-      })
-    }, */
-
     selecionar: function(val){
       let id = val.target.id
       this.selectItem(id)
-    },
-
-    changeSkin: function(){
-      this.itens.map((item)=>{
-        if(item.selected == true){
-          this.$emit('change-skin', item.class)
-        }
-      })
     },
 
     buy: function(val){
@@ -120,9 +97,7 @@ export default {
       let id = val.target.id
 
         if((this.currentMoney - value) >= 0 ){
-
           alert("Compra realizada")
-          
           this.buyItem(id)
 
           let oldMoney = localStorage.getItem('fireDayScore')
@@ -136,29 +111,6 @@ export default {
       }
     },
 
-    /* loadItens: function(){
-      let array = localStorage.getItem('fireDayShoppingList')
-      let selected = localStorage.getItem('fireDaySkin')
-
-      if(array){
-        array = array.split(",")
-        this.shoppingList = array
-  
-        this.shoppingList.map((buy)=>{
-          this.itens.map((item)=>{
-            if(buy == item.id){
-              item.bought = true
-            }
-            if(selected == item.class){
-              item.selected = true
-            }else{
-              item.selected = false
-            }
-          })
-        })
-      }
-    }, */
-
     loadMoney: function(){
       this.currentMoney = localStorage.getItem('fireDayScore')
     }
@@ -166,7 +118,6 @@ export default {
 
   mounted(){
     this.loadMoney()
-    this.changeSkin()
   }
 }
 </script>
@@ -175,8 +126,10 @@ export default {
 <style scoped lang="scss">
 .Store{
   background-color: #eee;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  max-width: 768px;
+  max-height: 900px;
   position: absolute;
 
   .header{
@@ -204,7 +157,7 @@ export default {
   }
 
   .carousel{
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     height: 400px;
     margin-top: 10px;
@@ -220,6 +173,11 @@ export default {
       text-align: center;
       border-radius: 20px;
       filter: drop-shadow(0px 0px 5px rgba(0,0,0,.2));
+
+      &:hover{
+        transform: scale(1.05);
+        transition: all .5s;
+      }
 
       img{
         width: 90%;

@@ -9,7 +9,7 @@
 
     <div class="player" 
       :style="[{ backgroundPosition: player.image + 'px' }, { bottom: player.posY + 'vh' }]"
-      v-bind:class="currentSkin "
+      v-bind:class="currentSkin"
       />
 
     <particlesJS v-if="inGame && !inPause" />
@@ -19,6 +19,7 @@
 
 <script>
 import particlesJS from './ParticlesJS'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
 
@@ -49,23 +50,26 @@ export default {
   props:[
     'inGame',
     'inPause',
-    'currentSkin'
   ],
 
-  watch:{
-    inGame: function(){
-      if(this.$props.inGame){
-        this.startGame()
-      }else{
-        this.gameOver()
-      }
-    },
-    currentSkin: function(){
-      
+  computed:{
+    ...mapState({
+      itens: state => state.itens
+    }),
+    currentSkin(){
+      let skin = this.itens.map((item)=>{
+        if(item.selected == true){
+          return item.class
+        }
+      })
+      return skin
     }
   },
 
   methods:{
+    ...mapMutations([
+      'loadStore'
+    ]),
 
     updateSprite: function(){
       if(this.$props.inGame == true && this.$props.inPause == false){
@@ -161,6 +165,16 @@ export default {
         this.game.vel = 0.04
       }
     },
+  },
+
+  watch:{
+    inGame: function(){
+      if(this.$props.inGame){
+        this.startGame()
+      }else{
+        this.gameOver()
+      }
+    }
   },
 
   mounted(){
