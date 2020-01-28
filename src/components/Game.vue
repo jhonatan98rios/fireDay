@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <div class="starry background" ></div>
-    <div class="sky background"></div>
+    <div class="sky background" :class="{animatedSky:inGame}"></div>
     <div class="mountain background" :style="{ backgroundPosition: game.mountainPos + '%' }" />
     <div class="mountains background" :style="{ backgroundPosition: game.mountainsPos + '%' }" />
     <div class="forest background" :style="{ backgroundPosition: game.forestPos + 'px' }" />
@@ -190,17 +190,20 @@ export default {
   width: 100%;
   max-height: 850px;
   max-width: 768px;
-  animation-name: animaSky;
-  animation-duration: 600s;
+  background-color: #5af
+}
 
+.animatedSky{
+  animation-name: animaSky;
+  animation-duration: 300s;
 }
 
 @keyframes animaSky {
   0%   {background-color: #5af}
   20%  {background-color: #c6adf4}
   30%  {background-color: #c74e1f}
-  40% {background-color: rgba(0,0,0,0.8)}
-  50% {background-color: #002}
+  40% {background-color: #002}
+  50% {background-color: rgba(0,0,0,0.8)}
   60% {background-color: #c74e1f}
   80% {background-color: #c6adf4}
   90% {background-color: #9aa}

@@ -11,10 +11,6 @@
 <script>
 
 export default {
-  components: {
-    
-  },
-
   data(){
     return{
       currentSkin: 'lobo-guara'
@@ -92,7 +88,7 @@ width: 100vw;
     height: 100vh;
     font-family: sans-serif;
     max-width: 768px;
-    max-height: 850px;
+    max-height: 900px;
     top: 100px;
     
     @media(min-width: 769px){
@@ -100,7 +96,11 @@ width: 100vw;
       box-shadow: 0px 0px 20px rgba(0,0,0,.8);
     }
 
-    @media(max-height: 940px){
+    @media(max-height: 1080px){
+      top: 50px;
+    }
+
+    @media(max-height: 920px){
       top: 0;
     }
   }
