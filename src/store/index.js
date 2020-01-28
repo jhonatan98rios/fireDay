@@ -40,9 +40,29 @@ const store = new Vuex.Store({
 				]
     },
     mutations:{
-			loadStorage: state => {
+			loadStore: state => {
 				state.itens = JSON.parse(localStorage.getItem('fireDayStorage'))
 			},
+			buyItem: (state, id) => {
+				state.itens = state.itens.map((item)=>{
+					if(item.id == id && item.bought == false){
+						item.bought = true
+					}
+					return item
+				})
+				localStorage.setItem('fireDayStorage', JSON.stringify(state.itens))
+			},
+			selectItem: (state, id) => {
+				state.itens = state.itens.map((item)=>{
+					if(item.id == id && item.bought == true && item.selected == false){
+						item.selected = true
+					}else{
+						item.selected = false
+					}
+					return item
+				})
+				localStorage.setItem('fireDayStorage', JSON.stringify(state.itens))
+			}
     }
 })
 

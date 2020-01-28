@@ -55,6 +55,7 @@
 <script>
 
 import Flickity from 'vue-flickity';
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   components:{
@@ -74,9 +75,19 @@ export default {
     }
   },
 
-  methods:{
+  computed:{
+    ...mapState({
+      itens: state => state.itens
+    })
+  },
 
-    selecionar: function(val){
+  methods:{
+    ...mapMutations([
+      'buyItem',
+      'selectItem'
+    ]),
+
+    /* selecionar: function(val){
       this.itens.map((item)=>{
         if(item.id == val.target.id){
           if(item.bought == true){
@@ -89,6 +100,11 @@ export default {
           }
         }
       })
+    }, */
+
+    selecionar: function(val){
+      let id = val.target.id
+      this.selectItem(id)
     },
 
     changeSkin: function(){
@@ -106,11 +122,9 @@ export default {
         if((this.currentMoney - value) >= 0 ){
 
           alert("Compra realizada")
-          let array = this.shoppingList
-          array.push(id)
-          array = array.toString()
-          localStorage.setItem('fireDayShoppingList', array)
-  
+          
+          this.buyItem(id)
+
           let oldMoney = localStorage.getItem('fireDayScore')
           let newMoney =  parseInt(oldMoney) - value
   
@@ -120,10 +134,9 @@ export default {
         }else{
         alert("Dinheiro insuficiente")
       }
-      this.loadItens()
     },
 
-    loadItens: function(){
+    /* loadItens: function(){
       let array = localStorage.getItem('fireDayShoppingList')
       let selected = localStorage.getItem('fireDaySkin')
 
@@ -144,7 +157,7 @@ export default {
           })
         })
       }
-    },
+    }, */
 
     loadMoney: function(){
       this.currentMoney = localStorage.getItem('fireDayScore')
@@ -152,7 +165,6 @@ export default {
   },
 
   mounted(){
-    this.loadItens()
     this.loadMoney()
     this.changeSkin()
   }

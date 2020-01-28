@@ -1,7 +1,7 @@
 <template>
   <div class="screen">
     <div id="app">
-      <router-view :currentSkin="currentSkin" @change-skin="changeSkin" />
+      <router-view />
     </div>
     <div class="banner"></div>
     <div class="banner right"></div>
@@ -32,10 +32,6 @@ export default {
 
     hasMoney: function(money){
       this.content.money = money
-    },
-
-    changeSkin: function(skin){
-      this.currentSkin = skin
     },
 
     loadStorage: function(){
