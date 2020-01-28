@@ -69,7 +69,7 @@ height: 100vh;
 width: 100vw;
 
   .banner{
-    @media(min-width: 768px){
+    @media(min-width: 769px){
       width: calc((100vw - 778px)/2);
       height: 100vh;
       position: absolute;
@@ -95,7 +95,7 @@ width: 100vw;
     max-height: 850px;
     top: 100px;
     
-    @media(min-width: 768px){
+    @media(min-width: 769px){
       border: 5px solid #ccc;
       box-shadow: 0px 0px 20px rgba(0,0,0,.8);
     }

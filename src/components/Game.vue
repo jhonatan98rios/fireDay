@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <div class="starry background" ></div>
-    <div class="sky background" :style="{ top: game.skyPos + '%' }" ></div>
+    <div class="sky background"></div>
     <div class="mountain background" :style="{ backgroundPosition: game.mountainPos + '%' }" />
     <div class="mountains background" :style="{ backgroundPosition: game.mountainsPos + '%' }" />
     <div class="forest background" :style="{ backgroundPosition: game.forestPos + 'px' }" />
@@ -90,7 +90,6 @@ export default {
 
     render: function (){    
       if(this.$props.inGame == true && this.$props.inPause == false){
-        this.game.skyPos -= 0.1
         this.game.mountainPos += (this.game.vel / 10)
         this.game.mountainsPos += (this.game.vel)
         this.game.forestPos -= (this.game.vel * 300)
@@ -183,13 +182,30 @@ export default {
   background-size: contain;
 }
 
-/* .sky{
-  background-image: linear-gradient(0deg, #5af, #c6adf4, #c74e1f, rgba(0,0,0,0.9), #002, #c74e1f, #c6adf4, #9aa);
+.sky{
   margin: 0 auto;
   padding: 0;
   position: fixed;
-  height: 3000vh;
-} */
+  height: 100%;
+  width: 100%;
+  max-height: 850px;
+  max-width: 768px;
+  animation-name: animaSky;
+  animation-duration: 600s;
+
+}
+
+@keyframes animaSky {
+  0%   {background-color: #5af}
+  20%  {background-color: #c6adf4}
+  30%  {background-color: #c74e1f}
+  40% {background-color: rgba(0,0,0,0.8)}
+  50% {background-color: #002}
+  60% {background-color: #c74e1f}
+  80% {background-color: #c6adf4}
+  90% {background-color: #9aa}
+  100% {background-color: #5af}
+}
 
 .mountain{
   background-image: url("../assets/mountain.png");
@@ -207,6 +223,10 @@ export default {
   top: 150px;
   background-repeat: repeat-x;
   opacity: .9;
+
+  @media(min-width: 768px){
+    top: 100px;
+  }
 }
 
 .forest{
