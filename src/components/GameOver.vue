@@ -32,9 +32,9 @@ export default {
 .gameOver{
   text-align: center;
   position: absolute;
-  height: 50vh;
-  width: 60vw;
-  left: calc(20vw - 5px);
+  height: 50%;
+  width: 60%;
+  left: calc(20% - 5px);
   top: 20vh;
   color: #fff;
   font-size: 20px;

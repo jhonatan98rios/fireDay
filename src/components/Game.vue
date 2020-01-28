@@ -13,7 +13,6 @@
       />
 
     <particlesJS v-if="inGame && !inPause" />
-    <!-- <div class="touchable background" @mousedown="jump" v-touch:tap="jump" :class="{ 'block' : !inGame }" /> -->
     <div class="touchable background" @mousedown="jump" :class="{ 'block' : (!inGame || inPause) }" />
   </div>
 </template>
@@ -184,13 +183,13 @@ export default {
   background-size: contain;
 }
 
-.sky{
+/* .sky{
   background-image: linear-gradient(0deg, #5af, #c6adf4, #c74e1f, rgba(0,0,0,0.9), #002, #c74e1f, #c6adf4, #9aa);
   margin: 0 auto;
   padding: 0;
   position: fixed;
   height: 3000vh;
-}
+} */
 
 .mountain{
   background-image: url("../assets/mountain.png");
@@ -198,7 +197,7 @@ export default {
   top: 0;
   background-repeat: repeat-x;
   opacity: .8;
-  height: 110vh;
+  height: 110%;
 }
 
 .mountains{
@@ -213,7 +212,7 @@ export default {
 .forest{
   background-image: url("../assets/forest.png");
   background-repeat: repeat-x;
-  top: calc(70vh - 200px);
+  top: calc(70% - 200px);
   background-position-y: 36px !important;
 
   @media(min-width: 768px){
@@ -221,7 +220,7 @@ export default {
   }
 
   @media(min-height: 700px){
-    top: calc(70vh - 170px);
+    top: calc(70% - 170px);
   }
 }
 
@@ -250,16 +249,28 @@ export default {
   background-image: url("../assets/fire.png");
   background-position: -10px;
   background-repeat: no-repeat;
-  top: 78vh;
-  left: 100vw;
+  top: 78%;
+  left: 100%;
   position: fixed;
+  object-fit: cover;
 
-  @media(min-width: 768px){
-    top: 85vh;
+  @media(max-height: 1400px)and(min-height: 1200px){
+    top: 60%;
   }
-
-  @media(min-height: 700px){
-    top: 82vh;
+  @media(max-height: 1199px)and(min-height: 1100px){
+    top: calc(60% + 100px);
+  }
+  @media(max-height: 1099px)and(min-height: 1000px){
+    top: 78%;
+  }
+  @media(max-height: 999px)and(min-height: 800px){
+    top: 82%;
+  }
+  @media(max-height: 799px)and(min-height: 680px){
+    top: 81%;
+  }
+  @media(max-height: 679px)and(min-height: 500px){
+    top: 80%;
   }
 
 }
@@ -267,7 +278,6 @@ export default {
 .block{
   background-color: rgba(0,0,0,0.5);
   transition: all .3s;
-  
 }
 
 </style>

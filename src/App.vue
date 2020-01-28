@@ -1,6 +1,10 @@
 <template>
-  <div id="app">
-    <router-view :currentSkin="currentSkin" @change-skin="changeSkin" />
+  <div class="screen">
+    <div id="app">
+      <router-view :currentSkin="currentSkin" @change-skin="changeSkin" />
+    </div>
+    <div class="banner"></div>
+    <div class="banner right"></div>
   </div>
 </template>
 
@@ -59,14 +63,47 @@ body{
 
 }
 
-#app {
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-  overflow-y: hidden;
-  width: 100vw;
-  height: 100vh;
-  font-family: sans-serif;
+.screen{
+background-image: linear-gradient(to bottom, #000, #f50);
+height: 100vh;
+width: 100vw;
 
+  .banner{
+    @media(min-width: 768px){
+      width: calc((100vw - 778px)/2);
+      height: 100vh;
+      position: absolute;
+      background-color: #f50;
+      top: 0;
+      background-image: linear-gradient(to bottom, #000, #f50);
+    }
+  }
+
+  .right{
+    right: 0;
+  }
+
+  #app {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    max-width: 768px;
+    max-height: 850px;
+    top: 100px;
+    
+    @media(min-width: 768px){
+      border: 5px solid #ccc;
+      box-shadow: 0px 0px 20px rgba(0,0,0,.8);
+    }
+
+    @media(max-height: 940px){
+      top: 0;
+    }
+  }
 }
+
 </style>

@@ -33,6 +33,7 @@ export default {
 
 .lifeBar{
   width: 32vw;
+  max-width: 250px;
   height: 30px;
   position: absolute;
   border: solid #fff 4px;
